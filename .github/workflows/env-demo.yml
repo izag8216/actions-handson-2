@@ -6,41 +6,42 @@ on:
     branches: [ main ]
 
 env:
-  # ワークフローレベルの環境変数
-  GLOBAL_VAR: "これはグローバル変数です"
-  PROJECT_NAME: "GitHub Actions学習プロジェクト"
+  # Workflow level environment variables
+  GLOBAL_VAR: "This is a global variable"
+  PROJECT_NAME: "GitHub Actions Learning Project"
 
 jobs:
   env-test:
     runs-on: ubuntu-latest
     
     env:
-      # ジョブレベルの環境変数
-      JOB_VAR: "これはジョブ変数です"
+      # Job level environment variables
+      JOB_VAR: "This is a job variable"
     
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
     
-    - name: グローバル環境変数の表示
+    - name: Display global environment variables
       run: |
-        echo "グローバル変数: $GLOBAL_VAR"
-        echo "プロジェクト名: $PROJECT_NAME"
+        echo "Global variable: $GLOBAL_VAR"
+        echo "Project name: $PROJECT_NAME"
     
-        - name: ジョブ環境変数の表示
-            run: echo "ジョブ変数: $JOB_VAR"
+    - name: Display job environment variables
+      run: |
+        echo "Job variable: $JOB_VAR"
     
-    - name: ステップ環境変数の使用
+    - name: Use step environment variables
       env:
-        STEP_VAR: "これはステップ変数です"
+        STEP_VAR: "This is a step variable"
       run: |
-        echo "ステップ変数: $STEP_VAR"
-        echo "現在のユーザー: $USER"
-        echo "ホームディレクトリ: $HOME"
+        echo "Step variable: $STEP_VAR"
+        echo "Current user: $USER"
+        echo "Home directory: $HOME"
     
-    - name: GitHubコンテキスト変数の表示
+    - name: Display GitHub context variables
       run: |
-        echo "リポジトリ名: ${{ github.repository }}"
-        echo "ブランチ名: ${{ github.ref }}"
-        echo "コミットSHA: ${{ github.sha }}"
-        echo "アクター: ${{ github.actor }}"
+        echo "Repository name: ${{ github.repository }}"
+        echo "Branch name: ${{ github.ref }}"
+        echo "Commit SHA: ${{ github.sha }}"
+        echo "Actor: ${{ github.actor }}"
