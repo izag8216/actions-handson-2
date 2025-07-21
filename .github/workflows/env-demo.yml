@@ -1,5 +1,6 @@
 name: Environment Variables Demo
 
+
 on:
   push:
     branches: [ main ]
@@ -26,8 +27,8 @@ jobs:
         echo "グローバル変数: $GLOBAL_VAR"
         echo "プロジェクト名: $PROJECT_NAME"
     
-    - name: ジョブ環境変数の表示
-      run: echo "ジョブ変数: $JOB_VAR"
+        - name: ジョブ環境変数の表示
+            run: echo "ジョブ変数: $JOB_VAR"
     
     - name: ステップ環境変数の使用
       env:
